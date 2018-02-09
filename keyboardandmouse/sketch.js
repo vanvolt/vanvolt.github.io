@@ -4,7 +4,7 @@
 
 // global variables
 let gear;
-
+let x, y;
 // the preload function guarentees that the code inside the function is
 // executed before the rest of the program runs -- helpful for things
 // like loading images (since JS is asynchronous)
@@ -17,10 +17,23 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   document.addEventListener("contextmenu", event => event.preventDefault());
+  x = width / 2;
+  y = height / 2;
 }
 
 function draw() {
 
+}
+
+function deviceShaken() {
+  x = random(0, width / 2);
+  y = random(0, height);
+
+  fill(2);
+  textFont("Arial");
+  textAlign(CENTER);
+  textSize(32);
+  text("Shaken, not stirred.", x, y);
 }
 
 function mousePressed() {
