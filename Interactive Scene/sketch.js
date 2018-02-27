@@ -15,7 +15,6 @@ function setup() {
   blueAmount = 20;
   a = 100;
   b = 100;
-  // c = random(255);
   red = 1;
   green = 2;
   blue = 3;
@@ -52,7 +51,7 @@ function drawSquare(x, y) {
   rect(x, y, a, b);
 }
 
-//creating how whichever shape that's being drawing will change colour
+//creating how whichever shape that's being drawn will change colour
 function shapeChange() {
   //creating limits to the size of the shape
   if (red > 8) {
