@@ -1,18 +1,34 @@
 let x, y;
 let speed;
+let a, b;
 
 function setup() {
+  background(255);
   createCanvas(windowWidth, windowHeight);
-  x = 0;
-  y = 0;
-  speed = 100;
+  // x = 0;
+  // y = 0;
+  // speed = 100;
+
 }
 
 function draw() {
-  background(255);
-  fill(0);
-  rect(x, y, 100, 100);
-  moving();
+  a = random(width);
+  b = random(height);
+
+  if (mouseIsPressed && keyIsPressed && (key === "t" || key === "T")) {
+    // a = random(windowWidth);
+    // b = random(windowHeight);
+    triangle(a, b, a + 50, b - 100, a + 100, b);
+  }
+
+  if (keyIsPressed && (key === "x" || key === "z")) {
+    // a = random(windowWidth);
+    // b = random(windowHeight);
+    rect(a, b, 100, 50);
+  }
+  // fill(0);
+  // rect(x, y, 100, 100);
+  // moving();
 }
 
 function moveRight() {
