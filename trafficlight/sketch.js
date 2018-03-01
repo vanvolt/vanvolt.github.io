@@ -26,4 +26,9 @@ function drawOutlineOfLights() {
   ellipse(width/2, height/2 - 65, 50, 50); //top
   ellipse(width/2, height/2, 50, 50); //middle
   ellipse(width/2, height/2 + 65, 50, 50); //bottom
+
+  if (millis() >= 0 && millis() <= 1000) {
+    fill(255, 0, 0, 0);
+    ellipse(width/2, height/2 - 65, 50, 50); //top
+  }
 }
