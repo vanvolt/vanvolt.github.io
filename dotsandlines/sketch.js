@@ -1,5 +1,5 @@
 let x, y;
-let a, b, c;
+let a, b;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -12,14 +12,13 @@ function draw() {
 }
 
 function drawDots() {
+  a = mouseX;
+  b = mouseY;
   for (let x=width/25; x<width - width/25; x+=width/25) {
     for (let y=height/15; y<height - height/15; y+=height/15) {
-      a = random(255);
-      b = random(255);
-      c = random(255);
-      stroke(a, b, c, 500);
-      line(x, y, mouseX, mouseY);
-      fill(a, b, c);
+      stroke(255, 60);
+      line(x, y, a, b);
+      fill(255);
       ellipse(x, y, 4, 4);
       // point(x, y);
     }
