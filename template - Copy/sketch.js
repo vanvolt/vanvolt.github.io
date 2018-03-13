@@ -1,4 +1,5 @@
 let state;
+let groundLine;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -62,9 +63,20 @@ function startScreen() {
 }
 
 function characterSelect() {
-  background(100, 200, 100);
-  rect(500, 500, 100, 100);
-
+  groundLine = 5*height/7;
+  background(100, 100, 250);
+  fill(50, 250, 50);
+  rect(-1, groundLine, width + 1, height + 1);
+  fill(255);
+  ellipse(width/3, groundLine - 100, 200, 200);
+  fill(55);
+  rect(4*width/6, height/6, 1*width/6, height/2);
+  // stroke(0);
+  // for (let i = 0; i <= width; i+=width/20) {
+  //   for (let j = 0; j <= width; j+=width/20) {
+  //     line(i, 0, j, height);
+  //   }
+  // }
 }
 
 function gamePlay() {
@@ -73,4 +85,8 @@ function gamePlay() {
 
 function endGame() {
 
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
 }
