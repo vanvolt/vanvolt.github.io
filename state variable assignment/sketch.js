@@ -1,6 +1,7 @@
-let state;
+let state, colour;
 let groundLine;
 let a, b, c;
+let colourSize, ballSize;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -9,6 +10,7 @@ function setup() {
   a = 255;
   b = 255;
   c = 255;
+
 }
 
 function draw() {
@@ -23,6 +25,13 @@ function draw() {
   }
   else if (state === 4) {
     endGame();
+  }
+
+  if (width > height) {
+    colourSize = 3*height/48;
+  }
+  else {
+    colourSize = 3*width/48;
   }
 }
 
@@ -67,28 +76,53 @@ function startScreen() {
 }
 
 function characterSelect() {
+
+  //
+  // colourSize = 3*width/48;
   groundLine = 5*height/7;
   background(100, 100, 250);
   fill(50, 250, 50);
   rect(-1, groundLine, width + 1, height + 1);
-  fill(a, b, c);
-  ellipse(width/6, groundLine - 100, 200, 200);
+
   fill(55);
-  rect(3*width/7, height/12, 7*width/14, 7*height/12);
-  ellipse(x,y,w,[h]);
-  ellipse(x,y,w,[h]);
-  ellipse(x,y,w,[h]);
-  ellipse(x,y,w,[h]);
-  ellipse(x,y,w,[h]);
-  ellipse(x,y,w,[h]);
-  ellipse(x,y,w,[h]);
-  ellipse(x,y,w,[h]);
+  rect(5*width/14, height/12, 8*width/14, 6*height/12);
+
+  fill(255, 0, 0);
+  ellipse(6*width/14, 2*height/12, colourSize, colourSize);
+  fill(255, 100, 100);
+  ellipse(8*width/14, 2*height/12, colourSize, colourSize);
+  fill(255, 200, 200);
+  ellipse(10*width/14, 2*height/12, colourSize, colourSize);
+  fill(255);
+  ellipse(12*width/14, 2*height/12, colourSize, colourSize);
+
+  fill(0, 255, 0);
+  ellipse(6*width/14, 4*height/12, colourSize, colourSize);
+  fill(100, 255, 100);
+  ellipse(8*width/14, 4*height/12, colourSize, colourSize);
+  fill(200, 255, 200);
+  ellipse(10*width/14, 4*height/12, colourSize, colourSize);
+  fill(125);
+  ellipse(12*width/14, 4*height/12, colourSize, colourSize);
+
+  fill(0, 0, 255);
+  ellipse(6*width/14, 6*height/12, colourSize, colourSize);
+  fill(100, 100, 255);
+  ellipse(8*width/14, 6*height/12, colourSize, colourSize);
+  fill(200, 200, 255);
+  ellipse(10*width/14, 6*height/12, colourSize, colourSize);
+  fill(0);
+  ellipse(12*width/14, 6*height/12, colourSize, colourSize);
+
+  let a = get(mouseX, mouseY);
   // stroke(0);
   // for (let i = 0; i <= width; i+=width/20) {
   //   for (let j = 0; j <= width; j+=width/20) {
   //     line(i, 0, j, height);
   //   }
   // }
+  fill(a);
+  ellipse(width/6, groundLine - 100, 200, 200);
 }
 
 function gamePlay() {
