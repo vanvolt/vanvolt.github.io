@@ -2,7 +2,6 @@ let state, colour;
 let groundLine;
 let a, b, c;
 let colourWidth, colourHeight;
-let colourSize;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -11,9 +10,6 @@ function setup() {
   a = 255;
   b = 255;
   c = 255;
-  colourWidth = 2*width/14;
-  colourHeight = 2*height/12;
-
 }
 
 function draw() {
@@ -29,13 +25,6 @@ function draw() {
   else if (state === 4) {
     endGame();
   }
-
-  if (width > height) {
-    colourSize = 3*height/48;
-  }
-  else {
-    colourSize = 3*width/48;
-  }
 }
 
 function startScreen() {
@@ -48,7 +37,7 @@ function startScreen() {
   let rightSide = leftSide + buttonWidth;
   let bottomSide = topSide + buttonHeight;
   let lowLeftSide = leftSide + buttonWidth/4;
-  let lowTopSide = topSide + 300;
+  let lowTopSide = topSide + 200;
   let lowRightSide = width/2 + buttonWidth/4;
   let lowBottomSide = lowTopSide + buttonHeight;
 
@@ -74,14 +63,12 @@ function startScreen() {
   textAlign(CENTER);
   fill(0);
   textSize(70);
-  text("Play", width/2, 450);
-
+  text("Play", width/2, 350);
 }
 
 function characterSelect() {
+  cursor(ARROW);
 
-  //
-  // colourSize = 3*width/48;
   groundLine = 5*height/7;
   background(50, 100, 200);
   fill(50, 250, 50);
@@ -92,23 +79,44 @@ function characterSelect() {
 
   colourPallet();
 
-
-  // stroke(0);
-  // for (let i = 0; i <= width; i+=width/20) {
-  //   for (let j = 0; j <= width; j+=width/20) {
-  //     line(i, 0, j, height);
-  //   }
-  // }
   fill(a);
   ellipse(width/6, groundLine - 100, 200, 200);
+
+  continueButton();
 }
 
 function gamePlay() {
-
+  background(0);
+  textAlign(LEFT);
+  fill(255);
+  textSize(18);
+  text("Oops. Seems that you've fallen into a black hole. How exciting. Perhaps pressing a few buttons on your keyboard might get you out? I would try either 'b' or 'h' personally.", 50, 50);
+  fill(a);
+  ellipse(mouseX,mouseY,100,100);
 }
 
 function endGame() {
-
+  let millisecond = millis();
+  background(200, 20, 20);
+  noFill();
+  rect(width/2 - 100, 3*height/4 - 45, 200, 55);
+  textAlign(CENTER);
+  fill(0);
+  textSize(150);
+  text("Game Over", width/2, height/2);
+  textSize(40);
+  text("(I guess not)", width/2, 3*height/16);
+  textSize(45);
+  text("Try again", width/2, 3*height/4);
+  if (mouseX >= width/2 - 100 && mouseY >= 3*height/4 - 45 && mouseX <= width/2 + 100 && mouseY <= 3*height/4 + 10) {
+    cursor(HAND);
+    if (mouseIsPressed) {
+      cursor(ARROW);
+      state = 1;
+    }
+  }
+  textSize(20);
+  text("(If you'd like to of course. Maybe a different colour?)", width/2, 13*height/16);
 }
 
 function windowResized() {
@@ -121,58 +129,65 @@ function mouseClicked() {
   }
 }
 
+function continueButton() {
+  let buttonWidth = 400;
+  let buttonHeight = 100;
+  let leftSide = 7*width/8 - buttonWidth/2;
+  let topSide = 7*height/8 - buttonHeight/2;
+  let rightSide = leftSide + buttonWidth;
+  let bottomSide = topSide + buttonHeight;
+
+  fill(220);
+  if (mouseX >= leftSide && mouseX <= rightSide && mouseY >= topSide && mouseY <= bottomSide) {
+    cursor(HAND);
+    fill(150, 50, 200);
+    if (mouseIsPressed) {
+      cursor(ARROW);
+      state = 3;
+    }
+  }
+  rect(leftSide, topSide, buttonWidth, buttonHeight);
+  textAlign(CENTER);
+  fill(0);
+  textSize(70);
+  text("Con't...", leftSide + buttonWidth/2, topSide + 13*buttonHeight/20);
+
+}
+
 function colourPallet() {
-  // fill(255, 0, 0);
-  // ellipse(6*width/14, 2*height/12, colourSize, colourSize);
-  // fill(255, 100, 100);
-  // ellipse(8*width/14, 2*height/12, colourSize, colourSize);
-  // fill(255, 200, 200);
-  // ellipse(10*width/14, 2*height/12, colourSize, colourSize);
-  // fill(255);
-  // ellipse(12*width/14, 2*height/12, colourSize, colourSize);
-  //
-  // fill(0, 255, 0);
-  // ellipse(6*width/14, 4*height/12, colourSize, colourSize);
-  // fill(100, 255, 100);
-  // ellipse(8*width/14, 4*height/12, colourSize, colourSize);
-  // fill(200, 255, 200);
-  // ellipse(10*width/14, 4*height/12, colourSize, colourSize);
-  // fill(125);
-  // ellipse(12*width/14, 4*height/12, colourSize, colourSize);
-  //
-  // fill(0, 0, 255);
-  // ellipse(6*width/14, 6*height/12, colourSize, colourSize);
-  // fill(100, 100, 255);
-  // ellipse(8*width/14, 6*height/12, colourSize, colourSize);
-  // fill(200, 200, 255);
-  // ellipse(10*width/14, 6*height/12, colourSize, colourSize);
-  // fill(0);
-  // ellipse(12*width/14, 6*height/12, colourSize, colourSize);
+  colourWidth = 2*width/14;
+  colourHeight = 2*height/12;
 
   fill(255, 0, 0);
   rect(5*width/14, height/12, colourWidth, colourHeight);
-  fill(255, 100, 100);
+  fill(200, 150, 50);
   rect(7*width/14, height/12, colourWidth, colourHeight);
-  fill(255, 200, 200);
+  fill(200, 50, 150);
   rect(9*width/14, height/12, colourWidth, colourHeight);
   fill(255);
   rect(11*width/14, height/12, colourWidth, colourHeight);
 
   fill(0, 255, 0);
   rect(5*width/14, 3*height/12, colourWidth, colourHeight);
-  fill(100, 255, 100);
+  fill(150, 200, 50);
   rect(7*width/14, 3*height/12, colourWidth, colourHeight);
-  fill(200, 255, 200);
+  fill(50, 200, 150);
   rect(9*width/14, 3*height/12, colourWidth, colourHeight);
   fill(125);
   rect(11*width/14, 3*height/12, colourWidth, colourHeight);
 
   fill(0, 0, 255);
   rect(5*width/14, 5*height/12, colourWidth, colourHeight);
-  fill(100, 100, 255);
+  fill(50, 150, 200);
   rect(7*width/14, 5*height/12, colourWidth, colourHeight);
-  fill(200, 200, 255);
+  fill(150, 50, 200);
   rect(9*width/14, 5*height/12, colourWidth, colourHeight);
   fill(0);
   rect(11*width/14, 5*height/12, colourWidth, colourHeight);
+}
+
+function keyPressed() {
+  if (key === "b" || key === "B" || state === 3) {
+    state = 4;
+  }
 }
