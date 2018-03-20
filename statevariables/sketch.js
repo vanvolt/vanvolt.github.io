@@ -1,17 +1,18 @@
-let state, colour;
+//Assigning global variables
+let state;
 let groundLine;
-let a, b, c;
+let a;
 let colourWidth, colourHeight;
 
+//The canvas and setting the state to 1 and giving 'a' a value of 255 for the colour of white later on
 function setup() {
   createCanvas(windowWidth, windowHeight);
   background(255);
   state = 1;
   a = 255;
-  b = 255;
-  c = 255;
 }
 
+//The four states of the program and their corresponding functions
 function draw() {
   if (state === 1) {
     startScreen();
@@ -27,6 +28,7 @@ function draw() {
   }
 }
 
+//The opening title screen which gives you the option to start playing
 function startScreen() {
   background(230);
 
@@ -66,6 +68,7 @@ function startScreen() {
   text("Play", width/2, 350);
 }
 
+//This screen includes a colour select for your character which is just a simple circle
 function characterSelect() {
   cursor(ARROW);
 
@@ -85,6 +88,7 @@ function characterSelect() {
   continueButton();
 }
 
+//I couldn't think of an interesting gameplay just yet, so a black screen with some key pressing is where I left it at
 function gamePlay() {
   background(0);
   textAlign(LEFT);
@@ -95,6 +99,7 @@ function gamePlay() {
   ellipse(mouseX,mouseY,100,100);
 }
 
+//The game over screen
 function endGame() {
   let millisecond = millis();
   background(200, 20, 20);
@@ -119,16 +124,19 @@ function endGame() {
   text("(If you'd like to of course. Maybe a different colour?)", width/2, 13*height/16);
 }
 
+//Allowing the program to resize to a changing screen
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
 
+//This allows you to choose a colour for your character by taking the colour value of the pixel that you clicked on
 function mouseClicked() {
   if (state === 2 && mouseX >= 5*width/14 && mouseY >= height/12 && mouseX <= 13*width/14 && mouseY <= 7*height/12) {
     a = get(mouseX, mouseY);
   }
 }
 
+//The continue bottom in the character select screen
 function continueButton() {
   let buttonWidth = 400;
   let buttonHeight = 100;
@@ -151,9 +159,9 @@ function continueButton() {
   fill(0);
   textSize(70);
   text("Con't...", leftSide + buttonWidth/2, topSide + 13*buttonHeight/20);
-
 }
 
+//Each colour for the colour select took up quite a few lines, so I decided to put it together in a seperate function
 function colourPallet() {
   colourWidth = 2*width/14;
   colourHeight = 2*height/12;
@@ -186,6 +194,7 @@ function colourPallet() {
   rect(11*width/14, 5*height/12, colourWidth, colourHeight);
 }
 
+//Allowing to go from the game play to end screen, for now
 function keyPressed() {
   if (key === "b" || key === "B" || state === 3) {
     state = 4;
