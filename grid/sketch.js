@@ -1,5 +1,4 @@
-let rows = 15
-;
+let rows = 15;
 let cols = 15;
 let cellSize;
 let grid;
