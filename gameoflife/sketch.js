@@ -1,5 +1,5 @@
-let rows = 30;
-let cols = 30;
+let rows = 9;
+let cols = 9;
 let cellSize;
 let grid;
 let autoPlay;
