@@ -33,7 +33,7 @@ function draw() {
   }
 }
 
-//A simple start sreen with a "play" butto and instructions
+//A simple start sreen with a "play" button and instructions
 function startScreen() {
   background(230);
 
@@ -140,7 +140,7 @@ function keyPressed() {
     grid = sudokuGridinitial;
   }
   //Check the answers
-  else if (key === "s" || key === "S") {
+  else if (key === "a" || key === "A") {
     grid = solveSudokuGrid(cols, rows);
   }
   //Choose which number to input
