@@ -64,8 +64,7 @@ function moveTroids() {
 }
 
 function displayTroids() {
-  choice = random(0,3);
-
+  
   for (let i=0; i<theTroids.length; i++) {
     if (theTroids[i].c <= 1) {
       image(troid, theTroids[i].x - 100, theTroids[i].y - 80, 200, 160);
